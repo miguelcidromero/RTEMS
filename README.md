@@ -21,12 +21,12 @@ Assuming you have the RTEMS 7 toolchain installed and `waf` configured:
 # 2. Compile the project
 ./waf
 ```
-### 3. Generate the Binary
+### 2. Generate the Binary
 ```bash
 arm-rtems7-objcopy -O binary build/arm/stm32f4/testsuites/benchmarks/absurd.exe absurd.bin
 ```
 
-### 4. Flash to Hardware
+### 3. Flash to Hardware
 Connect your STM32F4 Discovery board via USB.
 Locate the mass storage drive (e.g., DIS_F4) on your computer.
 Drag and drop the absurd.bin file into that drive.
