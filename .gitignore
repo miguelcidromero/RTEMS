@@ -1,0 +1,14 @@
+# Ignorar herramientas pesadas (el compilador)
+rtems/7/
+rtems/6/
+
+# Ignorar repositorios externos
+src/rsb/
+src/rtems/.git
+examples/
+
+# Ignorar compilación
+build/
+*.o
+*.exe
+*.bin

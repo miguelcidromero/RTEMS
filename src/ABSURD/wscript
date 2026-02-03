@@ -1,0 +1,35 @@
+import rtems_waf.rtems as rtems
+
+def options(opt):
+    rtems.options(opt)
+
+def configure(conf):
+    # --- FORZAMOS LAS RUTAS AQUI PARA QUE NO FALLE ---
+    # Esto sobreescribe cualquier cosa que venga de la consola
+    conf.options.rtems = '/home/miguelcid/quick-start/rtems/7'
+    conf.options.rtems_tools = '/home/miguelcid/quick-start/rtems/7'
+    conf.options.rtems_bsps = 'arm/stm32f4'
+    # -------------------------------------------------
+    rtems.configure(conf)
+
+def build(bld):
+    rtems.build(bld)
+    
+    bld(features = 'c cprogram',
+        target = 'absurd_benchmarks.exe',
+        source = [
+            'init.c',
+            'code/basic/array_stats.c',
+            'code/basic/binary_search.c',
+            'code/basic/bsqrt.c',
+            'code/basic/eq_root.c',
+            'code/basic/exp_int.c',
+            'code/basic/fibonacci.c',
+            'code/basic/matrix_nn.c',
+            'code/basic/mc_integral.c',
+            'code/basic/multi_search.c',
+            'code/basic/select_nmax.c',
+            'code/basic/unstruct.c'
+        ],
+        includes = ['code/include', 'code/basic'],
+        lib = ['m'])
